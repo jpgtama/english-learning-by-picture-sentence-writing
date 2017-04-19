@@ -15,21 +15,39 @@
             height: 80%;
         }
 
-        .picture, .chinese-sentences, .english-sentences {
+        .picture {
             flex: 2;
         }
 
-        .picture {
+        .chinese-english-sentences {
             flex: 3;
         }
 
         .thumb {
-            height: 75px;
+            height: 300px;
             border: 1px solid #000;
             margin: 10px 5px 0 0;
         }
 
+        .practice-information{
+            margin-bottom: 20px;
+        }
+
+        .practice .title, .page .title{
+            display: inline-block;
+            font-weight:bold;
+        }
+
+        .practice-name, .page-number{
+            display: inline-block;
+        }
+
+
+
     </style>
+
+
+
 
     <script src="js/index.js"></script>
 </head>
@@ -39,71 +57,47 @@
 <hr/>
 
 
-<div class="container">
-    <div class="picture">
-        <!--<div class="picture-widget">-->
-            <!--<input type="file"/>-->
-            <!--<output class="preview"></output>-->
-        <!--</div>-->
+<div class="practice-information">
+    <div class="practice">
+        <div class="title">Practice:</div>
+        <div class="practice-name">Practice Name</div>
     </div>
 
-    <div class="chinese-sentences"></div>
+    <div class="page">
+        <div class="title">Page:</div>
+        <div class="page-number">1</div>
+    </div>
 
-    <div class="english-sentences"></div>
+</div>
+
+
+
+
+<div class="container">
+    <div id="picture" class="picture">
+    </div>
+
+    <div id="chinese-english-sentences" class="chinese-english-sentences">
+        <div class="chinese-sentence">
+            <textarea cols="100" rows="1"></textarea>
+        </div>
+
+        <div class="english-sentence">
+            <textarea cols="100" rows="2"></textarea>
+        </div>
+
+
+    </div>
+
 </div>
 
 
 <script>
 
-    new ImageWidget(document.querySelector('.picture'));
-
-    //    function handleFileSelect(evt) {
-    //        var files = evt.target.files; // FileList object
-    //
-    //        // files is a FileList of File objects. List some properties.
-    //        var output = [];
-    //        for (var i = 0, f; f = files[i]; i++) {
-    //            output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-    //                    f.size, ' bytes, last modified: ',
-    //                    f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-    //                    '</li>');
-    //        }
-    //        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-    //    }
-    //
-    //    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    new ImageWidget(document.querySelector('#picture'));
 
 
-    function handleFileSelect(evt) {
-        var files = evt.target.files; // FileList object
 
-        // Loop through the FileList and render image files as thumbnails.
-        for (var i = 0, f; f = files[i]; i++) {
-
-            // Only process image files.
-            if (!f.type.match('image.*')) {
-                continue;
-            }
-
-            var reader = new FileReader();
-
-            // Closure to capture the file information.
-            reader.onload = (function (theFile) {
-                return function (e) {
-                    // Render thumbnail.
-                    var span = document.createElement('span');
-                    span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                        '" title="', escape(theFile.name), '"/>'].join('');
-                    document.getElementById('list').insertBefore(span, null);
-                };
-            })(f);
-
-            // Read in the image file as a data URL.
-            reader.readAsDataURL(f);
-        }
-    }
-
-//    document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
 
 </script>
