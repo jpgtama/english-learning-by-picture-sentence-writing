@@ -1,0 +1,35 @@
+.EditorTextAreaWidget{
+    .readOnlyNode{
+      border: solid 1px rgb(169, 169, 169);
+      padding: 2px;
+      margin-bottom: 4px;
+    }
+
+
+    .editableNode, .readOnlyNode{
+        display: table;
+
+        .toolbar{
+          display: table-cell;
+          position:relative;
+          left: 10px;
+          opacity: 0.5;
+
+          .toolbarWidget{
+            display: inline-block;
+            position: absolute;
+
+            .item{
+              margin: 3px;
+              &:hover{
+                cursor: pointer;
+                background-color: black;
+                color: white;
+              }
+            }
+          }
+        }
+    }
+
+
+}

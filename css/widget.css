@@ -1,0 +1,31 @@
+.EditorTextAreaWidget .readOnlyNode {
+  border: solid 1px #a9a9a9;
+  padding: 2px;
+  margin-bottom: 4px;
+}
+.EditorTextAreaWidget .editableNode,
+.EditorTextAreaWidget .readOnlyNode {
+  display: table;
+}
+.EditorTextAreaWidget .editableNode .toolbar,
+.EditorTextAreaWidget .readOnlyNode .toolbar {
+  display: table-cell;
+  position: relative;
+  left: 10px;
+  opacity: 0.5;
+}
+.EditorTextAreaWidget .editableNode .toolbar .toolbarWidget,
+.EditorTextAreaWidget .readOnlyNode .toolbar .toolbarWidget {
+  display: inline-block;
+  position: absolute;
+}
+.EditorTextAreaWidget .editableNode .toolbar .toolbarWidget .item,
+.EditorTextAreaWidget .readOnlyNode .toolbar .toolbarWidget .item {
+  margin: 3px;
+}
+.EditorTextAreaWidget .editableNode .toolbar .toolbarWidget .item:hover,
+.EditorTextAreaWidget .readOnlyNode .toolbar .toolbarWidget .item:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
