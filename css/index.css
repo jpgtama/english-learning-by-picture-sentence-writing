@@ -1,0 +1,35 @@
+body {
+  height: 800px;
+}
+.practice-information {
+  margin-bottom: 20px;
+}
+.practice-information .practice .title {
+  display: inline-block;
+  font-weight: bold;
+}
+.practice-information .practice .practice-name {
+  display: inline-block;
+}
+.practice-information .page .title {
+  display: inline-block;
+  font-weight: bold;
+}
+.practice-information .page .page-number {
+  display: inline-block;
+}
+.container {
+  display: flex;
+  height: 80%;
+}
+.container .picture {
+  flex: 2;
+}
+.container .chinese-english-sentences {
+  flex: 3;
+}
+.thumb {
+  height: 300px;
+  border: 1px solid #000;
+  margin: 10px 5px 0 0;
+}

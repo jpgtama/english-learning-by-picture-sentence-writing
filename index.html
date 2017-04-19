@@ -3,57 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>English Learning By Picture Sentence Writing</title>
-
-    <style>
-
-        body {
-            height: 800px;
-        }
-
-        .container {
-            display: flex;
-            height: 80%;
-        }
-
-        .picture {
-            flex: 2;
-        }
-
-        .chinese-english-sentences {
-            flex: 3;
-        }
-
-        .thumb {
-            height: 300px;
-            border: 1px solid #000;
-            margin: 10px 5px 0 0;
-        }
-
-        .practice-information{
-            margin-bottom: 20px;
-        }
-
-        .practice .title, .page .title{
-            display: inline-block;
-            font-weight:bold;
-        }
-
-        .practice-name, .page-number{
-            display: inline-block;
-        }
-
-        .chinese-english-sentences-widget{
-            margin-bottom: 20px;
-        }
-
-    </style>
-
-
-
-
     <script src="js/index.js"></script>
     <link rel="stylesheet" href="css/widget.css">
-
+    <link href="css/index.css" rel="stylesheet">
 </head>
 <body>
 
@@ -82,40 +34,11 @@
     </div>
 
     <div id="chinese-english-sentences" class="chinese-english-sentences">
-
-        <!--<div class="chinese-english-sentence-list-widget">-->
-            <!--<div class="chinese-english-sentences-widget">-->
-                <!--<div class="chinese-sentence">-->
-                    <!--<textarea cols="100" rows="1"></textarea>-->
-                <!--</div>-->
-
-                <!--<div class="english-sentence">-->
-                    <!--<textarea cols="100" rows="2"></textarea>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-
-
-
     </div>
-
 </div>
 
 
-<!--<div class="EditorTextAreaWidget">-->
-    <!--<div class="content-readonly">-->
-        <!--小红的脸红了，对叔叔说：“对不起，我错了，我以后都要爱护花草。”-->
-    <!--</div>-->
-    <!--<div class="content-editable">-->
-        <!--<textarea></textarea>-->
-    <!--</div>-->
-<!--</div>-->
 
-<div id="test-EditorTextAreaWidget">
-
-</div>
 
 
 <script>
@@ -127,7 +50,6 @@
         new ChineseEnglishSentenceListWidget(document.querySelector('#chinese-english-sentences'), data);
     });
 
-//    new EditorTextAreaWidget(document.querySelector('#test-EditorTextAreaWidget'), 'editable', '小红的脸红了，对叔叔说：“对不起，我错了，我以后都要爱护花草。');
 
 </script>
 

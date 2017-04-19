@@ -1,3 +1,6 @@
+.chinese-english-sentences-widget {
+  margin-bottom: 20px;
+}
 .EditorTextAreaWidget .readOnlyNode {
   border: solid 1px #a9a9a9;
   padding: 2px;
@@ -27,5 +30,8 @@
 .EditorTextAreaWidget .readOnlyNode .toolbar .toolbarWidget .item:hover {
   cursor: pointer;
   background-color: black;
+  color: white;
+}
+.hello {
   color: white;
 }
