@@ -1,5 +1,11 @@
 .chinese-english-sentences-widget {
   margin-bottom: 20px;
+  display: table;
+
+  .toolbar{
+    display: table-cell;
+  }
+
 }
 
 .EditorTextAreaWidget {
@@ -49,7 +55,7 @@
 
 .AddMoreWidget{
   height: 30px;
-  background-color: aliceblue;
+  background-color: aquamarine;
   border-radius: 5px;
   width: 400px;
   margin: 0 auto;
@@ -63,4 +69,29 @@
   &:hover{
     opacity: 1;
   }
+}
+
+.toolbar-wrapper{
+  display: table;
+
+  .toolbar{
+    display: table-cell;
+    padding-right: 5px;
+    visibility: hidden;
+    .item{
+      cursor:pointer;
+      margin-bottom: 3px;
+      &:hover{
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+
+  &:hover{
+    .toolbar{
+      visibility: visible;
+    }
+  }
+
 }

@@ -1,5 +1,9 @@
 .chinese-english-sentences-widget {
   margin-bottom: 20px;
+  display: table;
+}
+.chinese-english-sentences-widget .toolbar {
+  display: table-cell;
 }
 .EditorTextAreaWidget .readOnlyNode .content {
   border: solid 1px #a9a9a9;
@@ -38,7 +42,7 @@
 }
 .AddMoreWidget {
   height: 30px;
-  background-color: aliceblue;
+  background-color: aquamarine;
   border-radius: 5px;
   width: 400px;
   margin: 0 auto;
@@ -50,4 +54,23 @@
 }
 .AddMoreWidget:hover {
   opacity: 1;
+}
+.toolbar-wrapper {
+  display: table;
+}
+.toolbar-wrapper .toolbar {
+  display: table-cell;
+  padding-right: 5px;
+  visibility: hidden;
+}
+.toolbar-wrapper .toolbar .item {
+  cursor: pointer;
+  margin-bottom: 3px;
+}
+.toolbar-wrapper .toolbar .item:hover {
+  background-color: black;
+  color: white;
+}
+.toolbar-wrapper:hover .toolbar {
+  visibility: visible;
 }

@@ -41,17 +41,16 @@
 
 
 
-
 <script>
 
     new ImageWidget(document.querySelector('#picture'));
 
-//    new MyHttpRequest("./practice-examples/take-care-of-the-flowers-please/page-1/sentences.txt").get(data => {
-//        console.log(data);
-//        new ChineseEnglishSentenceListWidget(document.querySelector('#chinese-english-sentences'), data);
-//    });
-
     new ChineseEnglishSentenceListWidget(document.querySelector('#chinese-english-sentences'), null);
+
+    var testWorkingArea = document.querySelector('#test-working-area');
+
+    new ToolBarWrapper(document.body, undefined, testWorkingArea);
+
 
 </script>
 

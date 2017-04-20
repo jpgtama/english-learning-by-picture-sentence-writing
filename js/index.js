@@ -51,7 +51,10 @@ class MyHttpRequest{
 class BaseWidget{
     constructor(parentNode, domNodeStr){
         this.domNode = new Util().toDom(domNodeStr);
-        parentNode.appendChild(this.domNode);
+        if(parentNode){
+            parentNode.appendChild(this.domNode);
+        }
+
     }
 }
 
@@ -67,7 +70,6 @@ class ImageWidget extends BaseWidget{
         // get inner node
         this.uploadNode = this.domNode.querySelector('input');
         this.previewNode = this.domNode.querySelector('.preview');
-
 
         // handle file select
         var handleFileSelect =  (evt) => {
@@ -109,19 +111,21 @@ class ImageWidget extends BaseWidget{
 class ChineseEnglishSentenceWidget extends BaseWidget{
     constructor(parentNode, chineseSentence = '', englishSentence = '', mode='readonly'){
         super(parentNode, `<div class="chinese-english-sentences-widget">
-            <div class="chinese-sentence">
-                
-            </div>
-
-            <div class="english-sentence">
-                
+            <div class="content">
+                <div class="chinese-sentence">
+                </div>
+                <div class="english-sentence">
+                </div>
             </div>
         </div>`);
 
         // add EditorTextAreaWidget
-        new EditorTextAreaWidget(this.domNode.querySelector('.chinese-sentence'), mode, chineseSentence);
-        new EditorTextAreaWidget(this.domNode.querySelector('.english-sentence'), mode, englishSentence);
+        // new EditorTextAreaWidget(this.domNode.querySelector('.chinese-sentence'), mode, chineseSentence);
+        // new EditorTextAreaWidget(this.domNode.querySelector('.english-sentence'), mode, englishSentence);
 
+        // add AreaWidget
+        new TextAreaWidget(this.domNode.querySelector('.chinese-sentence'), chineseSentence);
+        new TextAreaWidget(this.domNode.querySelector('.english-sentence'), englishSentence);
 
     }
 }
@@ -136,129 +140,55 @@ class ChineseEnglishSentenceListWidget extends BaseWidget{
             for(var i=0;i<sentenceListArray.length;i+=2){
                 var chineseSentence = sentenceListArray[i];
                 var englishSentence = sentenceListArray[i+1];
-                new ChineseEnglishSentenceWidget(this.domNode, chineseSentence, englishSentence);
+
+                this.addOne(chineseSentence, englishSentence);
             }
         }
 
         // add AddMoreWidget
         this.addMoreWidget = new AddMoreWidget(this.domNode, e => {
-            new ChineseEnglishSentenceWidget(this.domNode, '', '', 'editable');
+            this.addOne('', '');
             this.domNode.appendChild(this.addMoreWidget.domNode);
         });
 
     }
+
+    addOne(chineseSentence, englishSentence){
+        var cesw = new ChineseEnglishSentenceWidget(null, chineseSentence, englishSentence);
+        new ToolBarWrapper(this.domNode, {Remove: (item)=>{
+            var isRemove = window.confirm('Are you sure?');
+            if(isRemove){
+                item.parentElement.removeChild(item);
+            }
+        }}, cesw.domNode);
+    }
+
 }
 
-class EditorTextAreaWidget extends BaseWidget{
-    constructor(parentNode, /* String('readonly', 'editable') */mode = 'readonly', contentStr){
-        super(parentNode, `<div class="EditorTextAreaWidget">
-            <div class="readOnlyNode">
-                <div class="toolbar"></div>
-                <div class="content"></div>
-            </div>
+class TextAreaWidget extends BaseWidget{
+    constructor(parentNode, contentStr = '') {
+        super(parentNode, `<div class="TextAreaWidget">
             <div class="editableNode">
-                <div class="toolbar"></div>
                 <textarea class="content" cols="100" rows="2"></textarea>
             </div>
         </div>`);
-
-        this.readOnlyNode = this.domNode.querySelector('.readOnlyNode');
-        this.editableNode = this.domNode.querySelector('.editableNode');
-
-        // add tool bar widget
-        new ToolBarWidget(this.readOnlyNode.querySelector('.toolbar'), {Edit: ()=>{
-            this.editableMode();
-        }});
-
-        new ToolBarWidget(this.editableNode.querySelector('.toolbar'), {Done: ()=>{
-            this.readonlyMode();
-        }});
-
-        // set content
-        if(contentStr){
-            this.readOnlyValue = contentStr;
-            this.editableValue = contentStr;
-        }
-
-        // select mode
-        if(mode === 'readonly'){
-            this.readonlyMode();
-        }else if(mode === 'editable'){
-            this.editableMode();
-        }else{
-            throw 'not supported mode';
-        }
+        this.content = contentStr;
     }
 
-    set readOnlyValue(v){
-        this.readOnlyNode.querySelector('.content').innerText = v;
-    }
-    get readOnlyValue(){
-        return this.readOnlyNode.querySelector('.content').innerText;
+    get content(){
+        this.contentNode.value;
     }
 
-    set editableValue(v){
-        this.editableNode.querySelector('textarea').value = v;
+    set content(c){
+        this.contentNode.value = c;
     }
 
-    get editableValue(){
-        return this.editableNode.querySelector('textarea').value;
-    }
-
-    readonlyMode(){
-        this.readOnlyValue = this.editableValue;
-
-        this.setEditableNodeDisplay(false);
-        this.setReadOnlyNodeDisplay(true);
-    }
-
-    editableMode(){
-        this.setReadOnlyNodeDisplay(false);
-        this.setEditableNodeDisplay(true);
-    }
-
-    setEditableNodeDisplay(isShow){
-        this.editableNode.style.display = isShow? 'table' : 'none';
-    }
-
-    setReadOnlyNodeDisplay(isShow){
-        this.readOnlyNode.style.display = isShow? 'table' : 'none';
+    get contentNode(){
+        return this.domNode.querySelector('textarea');
     }
 }
 
-class ToolBarWidget extends BaseWidget{
-    constructor(parentNode, buttons = {Done: ()=> {alert('Default Toolbar Item')}}){
 
-        //  parse buttons
-        var itemsHtml = '';
-
-        Object.keys(buttons).forEach(k => {
-            var span = `<span class="item">${k}</span>`;
-            itemsHtml += span;
-        });
-
-
-        var template = `<div class="toolbarWidget">${itemsHtml}</div>`;
-
-
-        super(parentNode, template);
-
-        this.buttons = buttons;
-        this.setListener();
-    }
-
-    setListener(){
-        this.domNode.addEventListener('click', e => {
-            var innerText = e.target.innerText;
-
-            if(this.buttons[innerText]){
-                this.buttons[innerText]();
-            }
-
-        });
-    }
-
-}
 
 class AddMoreWidget extends BaseWidget{
     constructor(parentNode, callback = ()=>{alert('Default Add More Widget')}){
@@ -268,6 +198,55 @@ class AddMoreWidget extends BaseWidget{
 
         // add event listener
         this.domNode.addEventListener('click', callback);
+    }
+}
 
+class ToolBarWrapper extends BaseWidget{
+    constructor(parentNode, buttons = {Done: ()=> {alert('Default Toolbar Item')}}, workingAreaDom){
+        //  parse buttons
+        var itemsHtml = '';
+
+        Object.keys(buttons).forEach(k => {
+            var span = `<div class="item">${k}</div>`;
+            itemsHtml += span;
+        });
+
+        var template = `<div class="toolbar-wrapper">
+            <div class="toolbar">
+                ${itemsHtml}
+            </div>
+    
+            <div class="working-area-attach-point"></div>
+        </div>`;
+
+        super(parentNode, template);
+
+        // add workingAreaDom
+        if(workingAreaDom){
+            this.workingAreaDom = workingAreaDom;
+            this.workingAreaAttachPoint.appendChild(workingAreaDom);
+        }else{
+            throw 'no workingAreaDom';
+        }
+
+        this.buttons = buttons;
+        this.setListener();
+    }
+
+
+    get workingAreaAttachPoint(){
+        return this.domNode.querySelector('.working-area-attach-point');
+    }
+
+    setListener(){
+        this.domNode.addEventListener('click', e => {
+            var innerText = e.target.innerText;
+
+            if(this.buttons[innerText]){
+                // TODO toolwrapper domNode as parameter
+                this.buttons[innerText](this.domNode);
+            }
+
+        });
     }
 }
