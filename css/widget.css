@@ -1,10 +1,14 @@
 .chinese-english-sentences-widget {
   margin-bottom: 20px;
 }
-.EditorTextAreaWidget .readOnlyNode {
+.EditorTextAreaWidget .readOnlyNode .content {
   border: solid 1px #a9a9a9;
   padding: 2px;
   margin-bottom: 4px;
+}
+.EditorTextAreaWidget .editableNode:hover .toolbar,
+.EditorTextAreaWidget .readOnlyNode:hover .toolbar {
+  visibility: visible;
 }
 .EditorTextAreaWidget .editableNode,
 .EditorTextAreaWidget .readOnlyNode {
@@ -12,15 +16,15 @@
 }
 .EditorTextAreaWidget .editableNode .toolbar,
 .EditorTextAreaWidget .readOnlyNode .toolbar {
+  visibility: hidden;
   display: table-cell;
   position: relative;
-  left: 10px;
   opacity: 0.5;
+  vertical-align: top;
 }
 .EditorTextAreaWidget .editableNode .toolbar .toolbarWidget,
 .EditorTextAreaWidget .readOnlyNode .toolbar .toolbarWidget {
   display: inline-block;
-  position: absolute;
 }
 .EditorTextAreaWidget .editableNode .toolbar .toolbarWidget .item,
 .EditorTextAreaWidget .readOnlyNode .toolbar .toolbarWidget .item {
@@ -30,8 +34,5 @@
 .EditorTextAreaWidget .readOnlyNode .toolbar .toolbarWidget .item:hover {
   cursor: pointer;
   background-color: black;
-  color: white;
-}
-.hello {
   color: white;
 }

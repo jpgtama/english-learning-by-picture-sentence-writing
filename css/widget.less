@@ -1,45 +1,48 @@
-.chinese-english-sentences-widget{
+.chinese-english-sentences-widget {
   margin-bottom: 20px;
 }
 
-
-.EditorTextAreaWidget{
-    .readOnlyNode{
+.EditorTextAreaWidget {
+  .readOnlyNode {
+    .content {
       border: solid 1px rgb(169, 169, 169);
       padding: 2px;
       margin-bottom: 4px;
     }
 
+  }
 
-    .editableNode, .readOnlyNode{
-        display: table;
-
+  .editableNode, .readOnlyNode{
+      &:hover{
         .toolbar{
-          display: table-cell;
-          position:relative;
-          left: 10px;
-          opacity: 0.5;
+          visibility: visible;
+        }
+      }
+  }
 
-          .toolbarWidget{
-            display: inline-block;
-            position: absolute;
+  .editableNode, .readOnlyNode {
+    display: table;
 
-            .item{
-              margin: 3px;
-              &:hover{
-                cursor: pointer;
-                background-color: black;
-                color: white;
-              }
-            }
+    .toolbar {
+      visibility: hidden;
+      display: table-cell;
+      position: relative;
+      opacity: 0.5;
+      vertical-align: top;
+
+      .toolbarWidget {
+        display: inline-block;
+
+        .item {
+          margin: 3px;
+          &:hover {
+            cursor: pointer;
+            background-color: black;
+            color: white;
           }
         }
+      }
     }
+  }
 
-
-}
-
-
-.hello{
-  color: white;
 }

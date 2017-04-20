@@ -158,19 +158,17 @@ class EditorTextAreaWidget extends BaseWidget{
     constructor(parentNode, /* String('readonly', 'editable') */mode = 'readonly', contentStr){
         super(parentNode, `<div class="EditorTextAreaWidget">
             <div class="readOnlyNode">
-                <div class="content"></div>
                 <div class="toolbar"></div>
+                <div class="content"></div>
             </div>
             <div class="editableNode">
-                <textarea cols="100" rows="2"></textarea>
                 <div class="toolbar"></div>
+                <textarea class="content" cols="100" rows="2"></textarea>
             </div>
         </div>`);
 
         this.readOnlyNode = this.domNode.querySelector('.readOnlyNode');
         this.editableNode = this.domNode.querySelector('.editableNode');
-
-
 
         // add tool bar widget
         new ToolBarWidget(this.readOnlyNode.querySelector('.toolbar'), {Edit: ()=>{
@@ -231,9 +229,6 @@ class EditorTextAreaWidget extends BaseWidget{
     setReadOnlyNodeDisplay(isShow){
         this.readOnlyNode.style.display = isShow? 'table' : 'none';
     }
-
-
-
 }
 
 class ToolBarWidget extends BaseWidget{
