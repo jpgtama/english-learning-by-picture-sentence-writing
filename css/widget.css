@@ -36,3 +36,18 @@
   background-color: black;
   color: white;
 }
+.AddMoreWidget {
+  height: 30px;
+  background-color: aliceblue;
+  border-radius: 5px;
+  width: 400px;
+  margin: 0 auto;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+}
+.AddMoreWidget:hover {
+  opacity: 1;
+}

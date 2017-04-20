@@ -41,16 +41,6 @@ class MyHttpRequest{
     }
 
     get(callback){
-        // this.httpRequest.onreadystatechange = () => {
-        //     if(httpRequest.readyState === XMLHttpRequest.DONE){
-        //         if(httpRequest.status === 200){
-        //             var data = httpRequest.responseText;
-        //             callback(data);
-        //         }else{
-        //             throw 'response code is not 200, it is '+ httpRequest.status;
-        //         }
-        //     }
-        // };
         this._setCallback(callback);
         this.httpRequest.open('GET', this.url, true);
         this.httpRequest.send();
@@ -117,7 +107,7 @@ class ImageWidget extends BaseWidget{
 }
 
 class ChineseEnglishSentenceWidget extends BaseWidget{
-    constructor(parentNode, chineseSentence = '', englishSentence = ''){
+    constructor(parentNode, chineseSentence = '', englishSentence = '', mode='readonly'){
         super(parentNode, `<div class="chinese-english-sentences-widget">
             <div class="chinese-sentence">
                 
@@ -129,8 +119,8 @@ class ChineseEnglishSentenceWidget extends BaseWidget{
         </div>`);
 
         // add EditorTextAreaWidget
-        new EditorTextAreaWidget(this.domNode.querySelector('.chinese-sentence'), 'readonly', chineseSentence);
-        new EditorTextAreaWidget(this.domNode.querySelector('.english-sentence'), 'readonly', englishSentence);
+        new EditorTextAreaWidget(this.domNode.querySelector('.chinese-sentence'), mode, chineseSentence);
+        new EditorTextAreaWidget(this.domNode.querySelector('.english-sentence'), mode, englishSentence);
 
 
     }
@@ -150,6 +140,11 @@ class ChineseEnglishSentenceListWidget extends BaseWidget{
             }
         }
 
+        // add AddMoreWidget
+        this.addMoreWidget = new AddMoreWidget(this.domNode, e => {
+            new ChineseEnglishSentenceWidget(this.domNode, '', '', 'editable');
+            this.domNode.appendChild(this.addMoreWidget.domNode);
+        });
 
     }
 }
@@ -263,4 +258,16 @@ class ToolBarWidget extends BaseWidget{
         });
     }
 
+}
+
+class AddMoreWidget extends BaseWidget{
+    constructor(parentNode, callback = ()=>{alert('Default Add More Widget')}){
+        super(parentNode, `<div class="AddMoreWidget">
+            <span>+</span>
+        </div>`);
+
+        // add event listener
+        this.domNode.addEventListener('click', callback);
+
+    }
 }
