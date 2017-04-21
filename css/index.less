@@ -1,51 +1,70 @@
-body {
-  height: 800px;
-}
+//body {
+//  height: 800px;
+//}
 
 
+//
+//.practice-information{
+//  margin-bottom: 20px;
+//
+//  .practice {
+//    .title{
+//      display: inline-block;
+//      font-weight:bold;
+//    }
+//
+//    .practice-name{
+//      display: inline-block;
+//    }
+//  }
+//
+//  .page {
+//    .title{
+//      display: inline-block;
+//      font-weight:bold;
+//    }
+//
+//    .page-number{
+//      display: inline-block;
+//    }
+//  }
+//}
+//
+//
+//.container {
+//  display: flex;
+//  height: 80%;
+//
+//  .picture {
+//    flex: 2;
+//  }
+//
+//  .chinese-english-sentences {
+//    flex: 3;
+//  }
+//}
+//
+//.thumb {
+//  height: 300px;
+//  border: 1px solid #000;
+//  margin: 10px 5px 0 0;
+//}
 
-.practice-information{
-  margin-bottom: 20px;
+@import "./vendor/bootstrap-3.3.7-dist/less/variables.less";
+.container-fluid{
+  img{
+    max-width: 100%;
+    height: auto;
+  }
 
-  .practice {
-    .title{
-      display: inline-block;
-      font-weight:bold;
+  .right-button-of-two{
+    @media (max-width: @screen-md-min){
+      float: right;
     }
 
-    .practice-name{
-      display: inline-block;
+    @media (min-width: @screen-md-min){
+      float: none;
     }
   }
 
-  .page {
-    .title{
-      display: inline-block;
-      font-weight:bold;
-    }
-
-    .page-number{
-      display: inline-block;
-    }
-  }
-}
-
-
-.container {
-  display: flex;
-  height: 80%;
-
-  .picture {
-    flex: 2;
-  }
-
-  .chinese-english-sentences {
-    flex: 3;
-  }
-}
-
-.thumb {
-  height: 300px;
-  border: 1px solid #000;
-  margin: 10px 5px 0 0;
 }

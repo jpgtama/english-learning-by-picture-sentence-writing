@@ -1,35 +1,14 @@
-body {
-  height: 800px;
+.container-fluid img {
+  max-width: 100%;
+  height: auto;
 }
-.practice-information {
-  margin-bottom: 20px;
+@media (max-width: 992px) {
+  .container-fluid .right-button-of-two {
+    float: right;
+  }
 }
-.practice-information .practice .title {
-  display: inline-block;
-  font-weight: bold;
-}
-.practice-information .practice .practice-name {
-  display: inline-block;
-}
-.practice-information .page .title {
-  display: inline-block;
-  font-weight: bold;
-}
-.practice-information .page .page-number {
-  display: inline-block;
-}
-.container {
-  display: flex;
-  height: 80%;
-}
-.container .picture {
-  flex: 2;
-}
-.container .chinese-english-sentences {
-  flex: 3;
-}
-.thumb {
-  height: 300px;
-  border: 1px solid #000;
-  margin: 10px 5px 0 0;
+@media (min-width: 992px) {
+  .container-fluid .right-button-of-two {
+    float: none;
+  }
 }

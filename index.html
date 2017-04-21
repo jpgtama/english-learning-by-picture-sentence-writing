@@ -1,58 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>English Learning By Picture Sentence Writing</title>
-    <script src="js/index.js"></script>
-    <link rel="stylesheet" href="css/widget.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Bootstrap -->
+    <link href="css/vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
+
+    <script src="js/index.js"></script>
+    <!--<link rel="stylesheet" href="css/widget.css">-->
+    <!--<link href="css/index.css" rel="stylesheet">-->
+    <title>English Learning By Picture Sentence Writing</title>
 </head>
-<body>
+<body class="container-fluid">
 
-<h1>English Learning By Picture Sentence Writing</h1>
-<hr/>
+<h1>Practice: xxxxxx</h1>
 
+<h2>Pages: 2/3</h2>
 
-<div class="practice-information">
-    <div class="practice">
-        <div class="title">Practice:</div>
-        <div class="practice-name">Practice Name</div>
-    </div>
-
-    <div class="page">
-        <div class="title">Page:</div>
-        <div class="page-number">1</div>
-    </div>
-
+<div>
+    <a class="btn btn-primary" href="#">Previous</a>
+    <a class="btn btn-primary right-button-of-two" href="#">Next</a>
 </div>
 
+<!--<div class="practice-information">-->
+    <!--<div class="practice">-->
+        <!--<div class="title">Practice:</div>-->
+        <!--<div class="practice-name">Practice Name</div>-->
+    <!--</div>-->
 
+    <!--<div class="page">-->
+        <!--<div class="title">Page:</div>-->
+        <!--<div class="page-number">1</div>-->
+    <!--</div>-->
+
+<!--</div>-->
 
 
 <div class="container">
-    <div id="picture" class="picture">
-    </div>
+    <div class="row">
+        <h3 class="text-center">Preview an image before it is uploaded</h3>
+        <hr />
 
-    <div id="chinese-english-sentences" class="chinese-english-sentences">
-
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-group">
+                <div class="main-img-preview">
+                    <img class="thumbnail img-preview" src="http://farm4.static.flickr.com/3316/3546531954_eef60a3d37.jpg" title="Preview Logo">
+                </div>
+                <div class="input-group">
+                    <input id="fakeUploadLogo" class="form-control fake-shadow" placeholder="Choose File" disabled="disabled">
+                    <div class="input-group-btn">
+                        <div class="fileUpload btn btn-danger fake-shadow">
+                            <span><i class="glyphicon glyphicon-upload"></i> Upload Logo</span>
+                            <input id="logo-id" name="logo" type="file" class="attachment_upload">
+                        </div>
+                    </div>
+                </div>
+                <p class="help-block">* Upload your company logo.</p>
+            </div>
+        </div>
     </div>
 </div>
+
+
+
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <!--<label class="btn btn-default btn-file">-->
+            <!--Browse <input type="file" hidden>-->
+        <!--</label>-->
+        <!--<div id="picture-uploader" class="picture-uploader"></div>-->
+        <!--<img src="image/pattern-discovery.png">-->
+        <!--<div>This is the text. This is the text. This is the text. This is the text. </div>-->
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <!--<img src="practice-examples/take-care-of-the-flowers-please/page-1/image/1-16031216213VP.jpg">-->
+        <!--<div>This is the text. This is the text. This is the text. This is the text. </div>-->
+        <!--<div id="chinese-english-sentences" class="chinese-english-sentences">-->
+           <!---->
+        <!--</div>-->
+
+        <button type="button" class="btn btn-primary btn-lg btn-block">Add</button>
+    </div>
+
+</div>
+
+<!--<div class="container">-->
+    <!--&lt;!&ndash;<div id="picture" class="picture"></div>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<div id="chinese-english-sentences" class="chinese-english-sentences">&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="AddMoreWidget">&ndash;&gt;-->
+            <!--&lt;!&ndash;<span>+</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</div>-->
 
 
 
 
 <script>
 
-    new ImageWidget(document.querySelector('#picture'));
-
-    new ChineseEnglishSentenceListWidget(document.querySelector('#chinese-english-sentences'), null);
-
-    var testWorkingArea = document.querySelector('#test-working-area');
-
-    new ToolBarWrapper(document.body, undefined, testWorkingArea);
+//    new ImageWidget(document.querySelector('#picture-uploader'));
+//
+//    new ChineseEnglishSentenceListWidget(document.querySelector('#chinese-english-sentences'), null);
+//
+//    var testWorkingArea = document.querySelector('#test-working-area');
+//
+//    new ToolBarWrapper(document.body, undefined, testWorkingArea);
 
 
 </script>
-
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="css/vendor/bootstrap-3.3.7-dist/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="css/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </body>
 </html>
