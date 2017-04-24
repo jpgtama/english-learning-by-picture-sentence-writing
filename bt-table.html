@@ -18,11 +18,26 @@
     <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
     <![endif]-->
 
+    <style>
+        .chinese-english-sentence-widget textarea{
+            width: 90%;
+        }
+        .chinese-english-sentence-widget .chinese:before{
+            content: 'Ch';
+            vertical-align: top;
+        }
+
+        .chinese-english-sentence-widget .english:before{
+            content: 'En';
+            vertical-align: top;
+        }
+
+    </style>
 
 </head>
 <body class="container-fluid">
 
-<table class="table table-striped">
+<table class="table table-striped chinese-english-sentence-widget">
     <thead>
     <tr>
         <th>#</th>
@@ -35,41 +50,58 @@
         <th scope="row">1</th>
         <td>
             <div>
-                <div class="chinese">周六阳光明媚</div>
-                <div class="english">It's sunny on Saturday</div>
+                <div class="chinese">
+                    <textarea >周六阳光明媚</textarea>
+                </div>
+                <div class="english">
+                    <textarea >It's sunny on Saturday</textarea>
+                </div>
             </div>
         </td>
-        <td>Edit/Remove</td>
+        <td>Remove</td>
     </tr>
     <tr>
         <th scope="row">2</th>
         <td>
             <div>
-                <div class="chinese">适合去外面游玩</div>
-                <div class="english">It's suitable to go outside and play.</div>
+                <div class="chinese">
+                    <textarea >适合去外面游玩</textarea>
+                </div>
+                <div class="english">
+                    <textarea >It's suitable to go outside and play.</textarea>
+                </div>
+
             </div>
         </td>
-        <td>Edit/Remove</td>
+        <td>Remove</td>
     </tr>
     <tr>
         <th scope="row">3</th>
         <td>
             <div>
-                <div class="chinese">去公园是一个不错的选择</div>
-                <div class="english">It's a good option to go to park.</div>
+                <div class="chinese">
+                    <textarea >去公园是一个不错的选择</textarea>
+                </div>
+                <div class="english">
+                    <textarea >It's a good option to go to park.</textarea>
+                </div>
             </div>
         </td>
-        <td>Edit/Remove</td>
+        <td>Remove</td>
     </tr>
     <tr>
         <th scope="row">4</th>
         <td>
             <div>
-                <div class="chinese">我们去了黄兴公园</div>
-                <div class="english">We went to HuangXing Park.</div>
+                <div class="chinese">
+                    <textarea >我们去了黄兴公园</textarea>
+                </div>
+                <div class="english">
+                    <textarea >We went to HuangXing Park.</textarea>
+                </div>
             </div>
         </td>
-        <td>Edit/Remove</td>
+        <td>Remove</td>
     </tr>
     </tbody>
 </table>
