@@ -12,9 +12,9 @@
 
 
 
-    <link href="css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
     <script src="js/index.js"></script>
-    <!--<link rel="stylesheet" href="css/widget.css">-->
+    <link rel="stylesheet" href="css/widget.css">
     <!--<link href="css/index.css" rel="stylesheet">-->
     <title>English Learning By Picture Sentence Writing</title>
 </head>
@@ -39,18 +39,20 @@
 <div class="row">
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-        <div class="image-uploader-widget">
-            <div>
-                <img src="image/placeholder.png" data-preview-url="image/placeholder.png" style="width: 100%; height: auto;">
-            </div>
-            <div style="text-align: center">
-                <input type="file" style="display: none;">
-                <button class="btn btn-primary" >Upload</button>
-            </div>
-        </div>
+        <!--<div class="image-uploader-widget">-->
+            <!--<div>-->
+                <!--<img src="image/placeholder.png" data-preview-url="image/placeholder.png" style="width: 100%; height: auto;">-->
+            <!--</div>-->
+            <!--<div style="text-align: center">-->
+                <!--<input type="file" style="display: none;">-->
+                <!--<button class="btn btn-primary" >Upload</button>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div data-widget="image-uploader-widget" data-preview-src="image/placeholder.png"></div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-        <button type="button" class="btn btn-primary btn-lg btn-block">Add</button>
+        <!--<button type="button" class="btn btn-primary btn-lg btn-block">Add</button>-->
+        <div data-widget="chinese-english-sentence-widget"></div>
     </div>
 
 </div>
@@ -59,39 +61,10 @@
 
 
 
+
+
 <script>
-    class ImageUploadWidget{
-        constructor(rootDom){
-            this.rootDom = rootDom;
-            // get img dom
-            this.imageDom = this.rootDom.querySelector('img');
-            this.fileChooseDom = this.rootDom.querySelector('input[type=file]');
-            this.buttonDom = this.rootDom.querySelector('button');
 
-            this.buttonDom.addEventListener('click', e => {
-                this.fileChooseDom.click();
-        });
-
-            this.fileChooseDom.addEventListener('change', e => {
-                if(this.fileChooseDom.files.length> 0){
-                var reader = new FileReader();
-                reader.onload = (e) =>{ this.imageDom.src = e.target.result };
-                reader.readAsDataURL(this.fileChooseDom.files[0]);
-            }else{
-                this.imageDom.src = this.imageDom.getAttribute('data-preview-src');
-            }
-        });
-        }
-
-        static parse(){
-            // find out all image-uploader-widget
-            document.querySelectorAll('.image-uploader-widget').forEach(dom => {
-                new ImageUploadWidget(dom);
-        });
-        }
-    };
-
-    ImageUploadWidget.parse();
 
 //    new ImageWidget(document.querySelector('#picture-uploader'));
 //
@@ -106,6 +79,6 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-
+<script src="js/widgets.js"></script>
 </body>
 </html>

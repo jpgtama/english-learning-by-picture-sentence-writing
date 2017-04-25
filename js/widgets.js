@@ -1,3 +1,79 @@
+class ImageUploadWidget{
+    constructor(rootDom){
+        this.rootDom = rootDom;
+        // get img dom
+        this.imageDom = this.rootDom.querySelector('img');
+        this.fileChooseDom = this.rootDom.querySelector('input[type=file]');
+        this.buttonDom = this.rootDom.querySelector('button');
+
+        this.buttonDom.addEventListener('click', e => {
+            this.fileChooseDom.click();
+        });
+
+        this.fileChooseDom.addEventListener('change', e => {
+            if(this.fileChooseDom.files.length> 0){
+                var reader = new FileReader();
+                reader.onload = (e) =>{ this.imageDom.src = e.target.result };
+                reader.readAsDataURL(this.fileChooseDom.files[0]);
+            }else{
+                this.imageDom.src = this.imageDom.getAttribute('data-preview-src');
+            }
+        });
+    }
+
+    static get rootDomTemplate(){
+        var templateStr = `<div class="image-uploader-widget">
+                    <div>
+                        <img src="" style="width: 100%; height: auto;">
+                    </div>
+                    <div style="text-align: center">
+                        <input type="file" style="display: none;">
+                        <button class="btn btn-primary" >Upload</button>
+                    </div>
+                </div>`;
+
+        var div = document.createElement('div');
+        div.innerHTML = templateStr;
+
+        var template = div.querySelector('.image-uploader-widget');
+        template.parentElement.removeChild(template);
+
+        return template;
+    }
+
+    static parse(){
+        // replace all data-widget=image-uploader-widget and replace with template
+        document.querySelectorAll('[data-widget=image-uploader-widget]').forEach(dom => {
+            // get image preview src
+            var previewImageSrc = dom.getAttribute('data-preview-src');
+
+            var template = ImageUploadWidget.rootDomTemplate;
+            var img = template.querySelector('img');
+            img.setAttribute('data-preview-src', previewImageSrc);
+            img.setAttribute('src', previewImageSrc);
+
+            // replace
+            dom.parentElement.insertBefore(template, dom);
+            dom.parentElement.removeChild(dom);
+        });
+
+        // find out all image-uploader-widget
+        if(!ImageUploadWidget.widgetList){
+            ImageUploadWidget.widgetList = [];
+        }
+        document.querySelectorAll('.image-uploader-widget').forEach(dom => {
+            var widget = new ImageUploadWidget(dom);
+            ImageUploadWidget.widgetList.push(widget);
+        });
+    }
+
+    static list(){
+        return ImageUploadWidget.widgetList;
+    }
+};
+ImageUploadWidget.parse();
+
+
 
 class ChineseEnglishSentenceWidget{
     constructor(rootDom){

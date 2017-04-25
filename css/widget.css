@@ -74,3 +74,29 @@
 .toolbar-wrapper:hover .toolbar {
   visibility: visible;
 }
+.chinese-english-sentence-widget textarea {
+  width: 90%;
+}
+.chinese-english-sentence-widget .chinese:before {
+  content: 'Ch';
+  vertical-align: top;
+}
+.chinese-english-sentence-widget .english:before {
+  content: 'En';
+  vertical-align: top;
+}
+.chinese-english-sentence-widget .operation-remove {
+  cursor: pointer;
+}
+.chinese-english-sentence-widget .operation-remove:hover {
+  background-color: #9d9d9d;
+  color: white;
+}
+.chinese-english-sentence-widget .operation-add {
+  text-align: center;
+  cursor: pointer;
+}
+.chinese-english-sentence-widget .operation-add:hover {
+  background-color: #9d9d9d;
+  color: white;
+}
