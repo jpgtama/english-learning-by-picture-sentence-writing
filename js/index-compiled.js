@@ -1,55 +1,71 @@
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * Created by evan on 2017/4/18.
  */
 
+var Util = function () {
+    function Util() {
+        _classCallCheck(this, Util);
 
-class Util {
-    constructor() {
         this.helperDom = document.createElement('div');
     }
 
-    toDom(str) {
-        this.helperDom.innerHTML = str;
+    _createClass(Util, [{
+        key: 'toDom',
+        value: function toDom(str) {
+            this.helperDom.innerHTML = str;
 
-        var child = this.helperDom.firstElementChild;
+            var child = this.helperDom.firstElementChild;
 
-        this.helperDom.innerHTML = '';
+            this.helperDom.innerHTML = '';
 
-        return child;
-    }
+            return child;
+        }
+    }]);
 
-}
+    return Util;
+}();
 
+var MyHttpRequest = function () {
+    function MyHttpRequest(url) {
+        _classCallCheck(this, MyHttpRequest);
 
-
-class MyHttpRequest{
-    constructor(url){
         this.url = url;
         this.httpRequest = new XMLHttpRequest();
     }
 
-    _setCallback(cb){
-        this.httpRequest.onreadystatechange = () => {
-            if(this.httpRequest.readyState === XMLHttpRequest.DONE){
-                if(this.httpRequest.status === 200){
-                    var data = this.httpRequest.responseText;
-                    cb(data);
-                }else{
-                    throw 'response code is not 200, it is '+ this.httpRequest.status;
+    _createClass(MyHttpRequest, [{
+        key: '_setCallback',
+        value: function _setCallback(cb) {
+            var _this = this;
+
+            this.httpRequest.onreadystatechange = function () {
+                if (_this.httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (_this.httpRequest.status === 200) {
+                        var data = _this.httpRequest.responseText;
+                        cb(data);
+                    } else {
+                        throw 'response code is not 200, it is ' + _this.httpRequest.status;
+                    }
                 }
-            }
-        };
-    }
+            };
+        }
+    }, {
+        key: 'get',
+        value: function get(callback) {
+            this._setCallback(callback);
+            this.httpRequest.open('GET', this.url, true);
+            this.httpRequest.send();
+        }
+    }]);
 
-    get(callback){
-        this._setCallback(callback);
-        this.httpRequest.open('GET', this.url, true);
-        this.httpRequest.send();
-    }
-
-}
-
-
+    return MyHttpRequest;
+}();
 
 // class BaseWidget{
 //     constructor(parentNode, domNodeStr){
@@ -253,3 +269,5 @@ class MyHttpRequest{
 //         });
 //     }
 // }
+
+//# sourceMappingURL=index-compiled.js.map

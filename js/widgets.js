@@ -1,4 +1,7 @@
+
 class ImageUploadWidget{
+
+    
     constructor(rootDom){
         this.rootDom = rootDom;
         // get img dom
