@@ -36,6 +36,12 @@ var ImageUploadWidget = function () {
     _createClass(ImageUploadWidget, null, [{
         key: 'parse',
         value: function parse() {
+            alert('begin to parse ImageWidget');
+
+            var testDiv = document.querySelector('#test');
+            // testDiv.appendChild(document.createElement('input'));
+            testDiv.innerHTML = '<input>';
+
             // replace all data-widget=image-uploader-widget and replace with template
             document.querySelectorAll('[data-widget=image-uploader-widget]').forEach(function (dom) {
                 // get image preview src
@@ -84,7 +90,10 @@ var ImageUploadWidget = function () {
 }();
 
 ;
-ImageUploadWidget.parse();
+
+window.addEventListener('load', function (e) {
+    ImageUploadWidget.parse();
+});
 
 var ChineseEnglishSentenceWidget = function () {
     function ChineseEnglishSentenceWidget(rootDom) {
@@ -223,6 +232,8 @@ var ChineseEnglishSentenceWidget = function () {
     return ChineseEnglishSentenceWidget;
 }();
 
-ChineseEnglishSentenceWidget.parse();
+window.addEventListener('load', function (e) {
+    ChineseEnglishSentenceWidget.parse();
+});
 
 //# sourceMappingURL=widgets-compiled.js.map

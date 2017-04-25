@@ -1,7 +1,7 @@
 
 class ImageUploadWidget{
 
-    
+
     constructor(rootDom){
         this.rootDom = rootDom;
         // get img dom
@@ -45,6 +45,13 @@ class ImageUploadWidget{
     }
 
     static parse(){
+        alert('begin to parse ImageWidget');
+
+        var testDiv = document.querySelector('#test');
+        // testDiv.appendChild(document.createElement('input'));
+        testDiv.innerHTML = '<input>';
+
+
         // replace all data-widget=image-uploader-widget and replace with template
         document.querySelectorAll('[data-widget=image-uploader-widget]').forEach(dom => {
             // get image preview src
@@ -74,7 +81,11 @@ class ImageUploadWidget{
         return ImageUploadWidget.widgetList;
     }
 };
-ImageUploadWidget.parse();
+
+window.addEventListener('load', e => {
+    ImageUploadWidget.parse();
+});
+
 
 
 
@@ -225,5 +236,6 @@ class ChineseEnglishSentenceWidget{
     }
 }
 
-
-ChineseEnglishSentenceWidget.parse();
+window.addEventListener('load', e => {
+    ChineseEnglishSentenceWidget.parse();
+});
