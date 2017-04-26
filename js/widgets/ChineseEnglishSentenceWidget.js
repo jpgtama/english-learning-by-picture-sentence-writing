@@ -6,11 +6,44 @@ window.addEventListener('load', function(e){
     var ChineseEnglishSentenceWidget = function(rootDom, options){
         this.rootDom = rootDom;
 
+        var widget = this;
+        var contentBody = this.rootDom.querySelector('tbody');
+
+        // enable add operation
         var opAddDom = this.rootDom.querySelector('.operation-add');
         opAddDom.addEventListener('click', function (e) {
-
+            var rowTemplate = ChineseEnglishSentenceWidget.getRowTemplate('', '');
+            contentBody.appendChild(rowTemplate);
+            widget.updateIndexNumber();
         });
 
+        var getAncestor = function(dom, isAncestor){
+            var check = function(p) {
+                if(!p){
+                    return undefined;
+                }
+                if(isAncestor(p)){
+                    return p;
+                }else{
+                    return check(p.parentElement);
+                }
+            };
+
+            return check(dom.parentElement);
+        };
+
+        // enable remove operation
+        contentBody.addEventListener('click', function (e) {
+            if(e.target.classList.contains('operation-remove')){
+                var confirm = window.confirm('Are you sure?');
+                if(confirm){
+                    // remove
+                    var tr = getAncestor(e.target, function(p){ return p.tagName === 'TR'; });
+                    tr.parentElement.removeChild(tr);
+                    widget.updateIndexNumber();
+                }
+            }
+        });
 
 
         this.getIndexNumberDoms = function () {
