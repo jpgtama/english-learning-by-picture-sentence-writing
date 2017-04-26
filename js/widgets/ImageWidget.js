@@ -11,20 +11,22 @@ window.addEventListener('load', function(e){
         // button click
         var widget = this;
         var imgDom = this.rootDom.querySelector('img');
-        var buttonClick = this.rootDom.querySelector('button');
-        var inputFile = this.rootDom.querySelector('input[type=file]');
-        buttonClick.addEventListener('click', function(e){
-            inputFile.click();
+        var opAddDom = this.rootDom.querySelector('.operation-add');
+        var inputFileDom = this.rootDom.querySelector('input[type=file]');
+        opAddDom.addEventListener('click', function(e){
+            inputFileDom.click();
         });
 
-        inputFile.addEventListener('change', function(e){
+        // preview image
+        inputFileDom.addEventListener('change', function(e){
             if(this.files.length> 0){
+                var selectedFile = this.files[0];
                 var reader = new FileReader();
                 reader.addEventListener('load', function(e){
                     imgDom.src = e.target.result;
                 });
 
-                reader.readAsDataURL(this.files[0]);
+                reader.readAsDataURL(selectedFile);
             }else{
                 imgDom.setAttribute('src', widget.previewSrc);
             }
@@ -33,7 +35,7 @@ window.addEventListener('load', function(e){
     };
 
     ImageWidget.getRootDomTemplate = function(){
-        var rootDomTemplateStr = '<div class="ImageWidget">\n                    <div>\n                        <img src="image/placeholder.png" style="width: 100%; height: auto;">\n                    </div>\n                    <div style="text-align: center">\n                        <input type="file" style="display: none;">\n                        <button class="btn btn-primary" >Upload</button>\n                    </div>\n                </div>';
+        var rootDomTemplateStr = '<div class="ImageWidget">\n                    <div>\n                        <img src="image/placeholder.png" style="width: 100%; height: auto;">\n                    </div>\n                    <div style="text-align: center">\n                        <input type="file" style="display: none;">\n        <button class="btn btn-primary operation-add" >Add</button>\n                    </div>\n                </div>';
 
         var div = document.createElement('div');
         div.innerHTML = rootDomTemplateStr;
