@@ -1,102 +1,26 @@
-.chinese-english-sentences-widget {
-  margin-bottom: 20px;
-  display: table;
-}
-.chinese-english-sentences-widget .toolbar {
-  display: table-cell;
-}
-.EditorTextAreaWidget .readOnlyNode .content {
-  border: solid 1px #a9a9a9;
-  padding: 2px;
-  margin-bottom: 4px;
-}
-.EditorTextAreaWidget .editableNode:hover .toolbar,
-.EditorTextAreaWidget .readOnlyNode:hover .toolbar {
-  visibility: visible;
-}
-.EditorTextAreaWidget .editableNode,
-.EditorTextAreaWidget .readOnlyNode {
-  display: table;
-}
-.EditorTextAreaWidget .editableNode .toolbar,
-.EditorTextAreaWidget .readOnlyNode .toolbar {
-  visibility: hidden;
-  display: table-cell;
-  position: relative;
-  opacity: 0.5;
-  vertical-align: top;
-}
-.EditorTextAreaWidget .editableNode .toolbar .toolbarWidget,
-.EditorTextAreaWidget .readOnlyNode .toolbar .toolbarWidget {
-  display: inline-block;
-}
-.EditorTextAreaWidget .editableNode .toolbar .toolbarWidget .item,
-.EditorTextAreaWidget .readOnlyNode .toolbar .toolbarWidget .item {
-  margin: 3px;
-}
-.EditorTextAreaWidget .editableNode .toolbar .toolbarWidget .item:hover,
-.EditorTextAreaWidget .readOnlyNode .toolbar .toolbarWidget .item:hover {
-  cursor: pointer;
-  background-color: black;
-  color: white;
-}
-.AddMoreWidget {
-  height: 30px;
-  background-color: aquamarine;
-  border-radius: 5px;
-  width: 400px;
-  margin: 0 auto;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.5;
-}
-.AddMoreWidget:hover {
-  opacity: 1;
-}
-.toolbar-wrapper {
-  display: table;
-}
-.toolbar-wrapper .toolbar {
-  display: table-cell;
-  padding-right: 5px;
-  visibility: hidden;
-}
-.toolbar-wrapper .toolbar .item {
-  cursor: pointer;
-  margin-bottom: 3px;
-}
-.toolbar-wrapper .toolbar .item:hover {
-  background-color: black;
-  color: white;
-}
-.toolbar-wrapper:hover .toolbar {
-  visibility: visible;
-}
-.chinese-english-sentence-widget textarea {
+.ChineseEnglishSentenceWidget textarea {
   width: 90%;
 }
-.chinese-english-sentence-widget .chinese:before {
+.ChineseEnglishSentenceWidget .chinese:before {
   content: 'Ch';
   vertical-align: top;
 }
-.chinese-english-sentence-widget .english:before {
+.ChineseEnglishSentenceWidget .english:before {
   content: 'En';
   vertical-align: top;
 }
-.chinese-english-sentence-widget .operation-remove {
+.ChineseEnglishSentenceWidget .operation-remove {
   cursor: pointer;
 }
-.chinese-english-sentence-widget .operation-remove:hover {
+.ChineseEnglishSentenceWidget .operation-remove:hover {
   background-color: #9d9d9d;
   color: white;
 }
-.chinese-english-sentence-widget .operation-add {
+.ChineseEnglishSentenceWidget .operation-add {
   text-align: center;
   cursor: pointer;
 }
-.chinese-english-sentence-widget .operation-add:hover {
+.ChineseEnglishSentenceWidget .operation-add:hover {
   background-color: #9d9d9d;
   color: white;
 }
