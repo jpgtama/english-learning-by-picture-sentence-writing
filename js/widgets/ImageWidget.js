@@ -8,6 +8,7 @@
 
         // button click
         var widget = this;
+
         var imgDom = this.rootDom.querySelector('img');
         imgDom.setAttribute('src', this.previewSrc);
 
