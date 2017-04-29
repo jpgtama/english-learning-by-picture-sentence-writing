@@ -9,6 +9,8 @@
         // button click
         var widget = this;
         var imgDom = this.rootDom.querySelector('img');
+        imgDom.setAttribute('src', this.previewSrc);
+
         var opAddDom = this.rootDom.querySelector('.operation-add');
         var inputFileDom = this.rootDom.querySelector('input[type=file]');
         opAddDom.addEventListener('click', function(e){
@@ -33,7 +35,7 @@
     };
 
 ImageWidget.getRootDomTemplate = function(){
-    var rootDomTemplateStr = '<div class="ImageWidget">\n                    <div>\n                        <img src="image/placeholder.png" style="width: 100%; height: auto;">\n                    </div>\n                    <div style="text-align: center">\n                        <input type="file" style="display: none;">\n        <button class="btn btn-primary operation-add" >Add</button>\n                    </div>\n                </div>';
+    var rootDomTemplateStr = '<div class="ImageWidget">\n                    <div>\n                        <img src="" style="width: 100%; height: auto;">\n                    </div>\n                    <div style="text-align: center">\n                        <input type="file" style="display: none;">\n        <button class="btn btn-primary operation-add" >Add</button>\n                    </div>\n                </div>';
 
     var div = document.createElement('div');
     div.innerHTML = rootDomTemplateStr;
