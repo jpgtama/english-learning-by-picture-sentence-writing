@@ -28,7 +28,7 @@ mysqli_close($conn2);
 // ==============  pdo style
 
 try{
-    $conn3 = new PDO("mysql:host=$servername;dbname=test", $username, $password);
+    $conn3 = new PDO("mysql:host=$servername;dbname=" . $dbname, $username, $password);
     echo "pdo connect successfully <br>";
 
     $conn3 = null;
