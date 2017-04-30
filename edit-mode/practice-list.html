@@ -11,7 +11,11 @@
     <script src="../css/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
     <link href="../css/index.css" rel="stylesheet">
-    <script src="../js/widgets/PracticeListWidget.js"></script>
+    <!-- <script src="../js/widgets/PracticeListWidget.js"></script> -->
+    <script src="../js/require.js" data-main="../js/main.js"></script> 
+    <script>
+        require(['widgets/PracticeListWidget']);
+    </script>
     <title>Practice List - English Learning By Picture Sentence Writing</title>
 </head>
 <body class="container-fluid practice-list-html">
