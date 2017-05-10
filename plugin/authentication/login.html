@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="css/login.css" rel="stylesheet" />
+    <script src="js/encrypt/aes.js"></script>
+</head>
+<body>
+
+<form class="plugin-authentication-login">
+    <input class="item username" placeholder="username"/>
+    <input class="item" name="username" type="hidden"/>
+    <input class="item" name="password" type="password" placeholder="password">
+    <button class="item" >submit</button>
+</form>
+
+<script>
+    var submitBtn = document.querySelector('.plugin-authentication-login button');
+
+    var un = document.querySelector('.plugin-authentication-login .username');
+    var hiddenUn =document.querySelector('.plugin-authentication-login input[name=username]');
+    var pw = document.querySelector('.plugin-authentication-login input[name=password]');
+
+    var secretKey = 'ilovehuxiaoyi';
+
+    submitBtn.addEventListener('click', function(e){
+//        e.preventDefault();
+        // encrypt usename
+        var encryptedUn = CryptoJS.AES.encrypt(un.value, secretKey);
+        hiddenUn.value = encryptedUn.toString();
+
+        // encrypt password
+        var encryptedPw = CryptoJS.AES.encrypt(pw.value, secretKey);
+        pw.value = encryptedPw.toString();
+
+
+    });
+
+
+</script>
+
+
+</body>
+</html>
